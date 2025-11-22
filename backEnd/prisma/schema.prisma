@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// tabelas
+
+model BoloCaseiro {
+  id              Int       @id @default(autoincrement())
+  nome            String    @unique
+  descricao       String    @db.Text
+  precoUnitario   Decimal   @db.Decimal(10, 2)
+ // disponivel      Boolean   @default(true)    
+  
+  imagemUrl       String?
+
+
+  criadoEm        DateTime  @default(now())
+  atualizadoEm    DateTime  @updatedAt
+
+  @@map("bolos_caseiros")
+}
+
+model Doces {
+  id              Int       @id @default(autoincrement())
+  nome            String    @unique
+  descricao       String    @db.Text
+  precoUnitario   Decimal   @db.Decimal(10, 2)
+  //disponivel      Boolean   @default(true)    
+  
+  imagemUrl       String?
+
+
+  criadoEm        DateTime  @default(now())
+  atualizadoEm    DateTime  @updatedAt
+
+  @@map("doces")
+}
+
