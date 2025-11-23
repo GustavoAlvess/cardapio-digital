@@ -23,8 +23,7 @@ app.get("/", (req, res) => {
 });
 
 // Aqui vão todas suas Rotas
-app.use('/caseiros', alunoRoute);
-app.use('/doces', funcionarioRoute);
+app.use('/admin', alunoRoute);
 
 // Iniciar servidor escutando na porta definida
 app.listen(serverPort, () => {
